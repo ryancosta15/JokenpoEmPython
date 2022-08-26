@@ -17,10 +17,10 @@ print("""Jogadas:
 """)
 
 #funções para jogo
-def inicio():
+def inicio(): #definir jogada do usuário
     usuario=int(input("Digite sua jogada:"))
     return usuario
-def machine(): 
+def machine(): #definir jogada da máquina
     jogadas=["PEDRA","PAPEL","TESOURA"]
     sorteio=choice(jogadas)
     return sorteio
@@ -52,13 +52,16 @@ def jogo():
     print("Jogador:\"Eu jogo {}!\"".format(play))
     print("Computador:\"Eu jogo {}!\"".format(playmach))
 jogo()
-if play==playmach: #caso empate
+
+#condicional inicial
+if play==playmach: #caso empate o jogo repetirá:
     print("Empate")
-    while play==playmach:
-        res1=inicio()
+    while play==playmach: #repetição enquanto mantenha empate
+        res1=inicio() #redefinir jogada do usuário
         res2=0
-        playmach=machine()
+        playmach=machine() #redefinir jogada da máquina
         sleep(0.5)
+        
         #Convertendo nomes novamente
         if res1==1:
             play="PEDRA"
@@ -77,44 +80,49 @@ if play==playmach: #caso empate
                 play="PAPEL"
             elif res2==3:
                 play="TESOURA"
-        jogo()
+        jogo() #jogar novamente
+    
+    #condicional após não dar empate
     if play=="PEDRA" and playmach=="PAPEL": #pedra x papel
-        print("A sua pedra foi embrulhada pelo papel adversário")#perde
-        vitória=False
+        print("A sua pedra foi embrulhada pelo papel adversário")
+        vitória=False #perde
     elif play=="PEDRA" and playmach=="TESOURA": #pedra x tesoura
-        print("A sua pedra esmagou a tesoura adversária")#ganha 
-        vitória=True
+        print("A sua pedra esmagou a tesoura adversária") 
+        vitória=True #ganha
     elif play=="PAPEL" and playmach=="PEDRA": #papel x pedra
-        print("O seu papel embrulhou a pedra adversária")#ganha
-        vitória=True
+        print("O seu papel embrulhou a pedra adversária")
+        vitória=True #ganha
     elif play=="PAPEL" and playmach =="TESOURA": #papel x tesoura
-        print("O seu papel foi cortado pela tesoura adversária")#perde
-        vitória=False
+        print("O seu papel foi cortado pela tesoura adversária")
+        vitória=False #perde
     elif play=="TESOURA" and playmach=="PEDRA": #tesoura x pedra
-        print("A sua tesoura foi esmagada pela pedra adversária")#perde
-        vitória=False
+        print("A sua tesoura foi esmagada pela pedra adversária")
+        vitória=False #perde
     elif play=="TESOURA" and playmach=="PAPEL": #tesoura x papel
-        print("A sua tesoura cortou o papel adversário")#ganha
-        vitória=True
-        #fim de jogo
+        print("A sua tesoura cortou o papel adversário")
+        vitória=True #ganha
+        #fim condicional caso haja algum empate no jogo, segue em "#resultado"
+
+#continuação do condicional inicial
 elif play=="PEDRA" and playmach=="PAPEL": #pedra x papel
-    print("A sua pedra foi embrulhada pelo papel adversário")#perde
-    vitória=False
+    print("A sua pedra foi embrulhada pelo papel adversário")
+    vitória=False #perde
 elif play=="PEDRA" and playmach=="TESOURA": #pedra x tesoura
-    print("A sua pedra esmagou a tesoura adversária")#ganha
-    vitória=True
+    print("A sua pedra esmagou a tesoura adversária")
+    vitória=True #ganha
 elif play=="PAPEL" and playmach=="PEDRA": #papel x pedra
-    print("O seu papel embrulhou a pedra adversária")#ganha
-    vitória=True
+    print("O seu papel embrulhou a pedra adversária")
+    vitória=True #ganha
 elif play=="PAPEL" and playmach =="TESOURA": #papel x tesoura
-    print("O seu papel foi cortado pela tesoura adversária")#perde
-    vitória=False
+    print("O seu papel foi cortado pela tesoura adversária")
+    vitória=False #perde
 elif play=="TESOURA" and playmach=="PEDRA": #tesoura x pedra
-    print("A sua tesoura foi esmagada pela pedra adversária")#perde
-    vitória=False
+    print("A sua tesoura foi esmagada pela pedra adversária")
+    vitória=False #perde
 elif play=="TESOURA" and playmach=="PAPEL": #tesoura x papel
-    print("A sua tesoura cortou o papel adversário")#ganha
-    vitória=True
+    print("A sua tesoura cortou o papel adversário")
+    vitória=True #ganha
+#fim do condicional inicial
 
 #resultado
 sleep(0.7)
